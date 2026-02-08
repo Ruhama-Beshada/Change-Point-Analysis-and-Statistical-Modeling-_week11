@@ -1,214 +1,190 @@
-📊 Change Point Analysis and Statistical Modeling of Brent Oil Prices
+# 📊 Change Point Analysis and Statistical Modeling of Brent Oil Prices  
+**Week 11 – Time Series Analysis Project**
 
-Week 11 – Time Series Analysis Project
+---
 
-📌 Project Overview
+## 📌 Project Overview
+This project focuses on analyzing **Brent crude oil price movements** using **time series analysis** and **change point detection** techniques.  
+The goal is to understand how **major geopolitical events, economic shocks, and OPEC decisions** relate to structural changes in oil prices over time.
 
-This project focuses on analyzing Brent crude oil price movements using time series analysis and change point detection techniques.
-The goal is to understand how major geopolitical events, economic shocks, and OPEC decisions relate to structural changes in oil prices over time.
+**Task 1** establishes the analytical foundation by exploring the data, defining the workflow, and preparing inputs for advanced modeling in later tasks.
 
-Task 1 establishes the analytical foundation by exploring the data, defining the workflow, and preparing inputs for advanced modeling in later tasks.
+---
 
-🎯 Objective (Task 1)
+## 🎯 Objective (Task 1)
+The objective of **Task 1** is to:
 
-The objective of Task 1 is to:
+- Define a clear **data analysis workflow**
+- Understand the **statistical properties** of Brent oil prices
+- Compile and align **key global events** with price movements
+- Establish **assumptions, limitations, and communication strategies**
+- Prepare the data for **change point modeling**
 
-Define a clear data analysis workflow
+---
 
-Understand the statistical properties of Brent oil prices
-
-Compile and align key global events with price movements
-
-Establish assumptions, limitations, and communication strategies
-
-Prepare the data for change point modeling
-
-🗂️ Project Structure
+## 🗂️ Project Structure
 .
 ├── data/
-│   ├── raw/                 # Original datasets (ignored by Git)
-│   └── processed/           # Cleaned and transformed data
+│ ├── raw/ # Original datasets (ignored by Git)
+│ └── processed/ # Cleaned and transformed data
+| └── events.csv # Key geopolitical & economic events
 ├── notebooks/
-│   └── task1_eda.ipynb      # Exploratory Data Analysis (Task 1)
+│ └── task1_eda.ipynb # Exploratory Data Analysis (Task 1)
 ├── docs/
-│   └── events.csv           # Key geopolitical & economic events
-├── backend/                 # Reserved for later tasks
-├── frontend/                # Reserved for dashboard
+│
+├── backend/ # Reserved for later tasks
+├── frontend/ # Reserved for dashboard
 ├── README.md
 └── requirements.txt
 
-🔁 Data Analysis Workflow
 
+---
+
+## 🔁 Data Analysis Workflow
 The workflow implemented in Task 1 includes:
 
-Data Loading
+1. **Data Loading**
+   - Load historical Brent oil price data
+   - Parse date fields and validate data types
 
-Load historical Brent oil price data
+2. **Data Quality Checks**
+   - Check for missing values and duplicates
+   - Verify date continuity and price validity
 
-Parse date fields and validate data types
+3. **Exploratory Data Analysis (EDA)**
+   - Visualize price trends over time
+   - Identify long-term trends and volatility clustering
 
-Data Quality Checks
+4. **Time Series Transformation**
+   - Compute log returns to stabilize variance
+   - Prepare data for stationarity testing
 
-Check for missing values and duplicates
+5. **Stationarity Testing**
+   - Apply **Augmented Dickey-Fuller (ADF) test**
+   - Confirm stationarity of log returns
 
-Verify date continuity and price validity
+6. **Volatility Analysis**
+   - Identify volatility clustering typical of financial time series
 
-Exploratory Data Analysis (EDA)
+7. **Event Overlay Analysis**
+   - Compile key geopolitical and economic events
+   - Visualize events alongside price movements
 
-Visualize price trends over time
+8. **Data Export**
+   - Save cleaned and transformed datasets for later modeling
 
-Identify long-term trends and volatility clustering
+---
 
-Time Series Transformation
+## 📈 Time Series Properties Analysis
 
-Compute log returns to stabilize variance
+### **Trend**
+- Raw Brent prices show **long-term trends** influenced by macroeconomic and political factors.
+- Non-stationarity is present in price levels.
 
-Prepare data for stationarity testing
-
-Stationarity Testing
-
-Apply Augmented Dickey-Fuller (ADF) test
-
-Confirm stationarity of log returns
-
-Volatility Analysis
-
-Identify volatility clustering typical of financial time series
-
-Event Overlay Analysis
-
-Compile key geopolitical and economic events
-
-Visualize events alongside price movements
-
-Data Export
-
-Save cleaned and transformed datasets for later modeling
-
-📈 Time Series Properties Analysis
-Trend
-
-Raw Brent prices show long-term trends influenced by macroeconomic and political factors.
-
-Non-stationarity is present in price levels.
-
-Stationarity
-
-Log returns were tested with the ADF test:
+### **Stationarity**
+- Log returns were tested with the **ADF test**:
 
 ADF Statistic: -16.43
 p-value: 2.49e-29
 
 
-✅ Result: Log returns are stationary and suitable for modeling.
+✅ **Result:** Log returns are stationary and suitable for modeling.
 
-Volatility
+### **Volatility**
+- High and low volatility periods are clustered.
+- Supports the use of **change point detection** to capture regime changes.
 
-High and low volatility periods are clustered.
+---
 
-Supports the use of change point detection to capture regime changes.
+## 🌍 Event Data Compilation
+A structured dataset of **major global events** was created, including:
 
-🌍 Event Data Compilation
-
-A structured dataset of major global events was created, including:
-
-Geopolitical conflicts (e.g., Gulf War, Libya Civil War)
-
-OPEC production decisions
-
-Global economic crises (e.g., 2008 Financial Crisis)
-
-Political upheavals (e.g., Arab Spring)
+- **Geopolitical conflicts** (e.g., Gulf War, Libya Civil War)  
+- **OPEC production decisions**  
+- **Global economic crises** (e.g., 2008 Financial Crisis)  
+- **Political upheavals** (e.g., Arab Spring)  
 
 Each event contains:
 
-Event name
+- **Event name**  
+- **Approximate start date**  
+- **Event type**  
 
-Approximate start date
-
-Event type
-
-📁 Stored as: docs/events.csv
+📁 Stored as: `docs/events.csv`  
 📊 Used to visually align events with price movements
 
-🔍 Change Point Models – Conceptual Overview
+---
 
-Change point models identify structural breaks in time series data.
+## 🔍 Change Point Models – Conceptual Overview
+**Change point models** identify **structural breaks** in time series data.  
 In Brent oil prices, they help detect:
 
-Sudden shifts in average prices
+- Sudden shifts in average prices  
+- Market regime changes  
+- Structural breaks caused by geopolitical or economic events
 
-Market regime changes
+**Expected Outputs:**
 
-Structural breaks caused by geopolitical or economic events
+- **Change point (τ):** Estimated time index of structural break  
+- **Segment parameters (μ₁, μ₂):** Mean log returns before and after τ  
+- **Uncertainty:** Credible intervals showing confidence in timing and magnitude  
 
-Expected Outputs:
+**Limitations:**
 
-Change point (τ): Estimated time index of structural break
+- Detected change points may not perfectly align with known events  
+- Correlation does not imply causation
 
-Segment parameters (μ₁, μ₂): Mean log returns before and after τ
+---
 
-Uncertainty: Credible intervals showing confidence in timing and magnitude
+## ⚠️ Assumptions and Limitations
 
-Limitations:
+### **Assumptions**
+- Event start dates are approximate  
+- Market reactions may be delayed  
+- Log returns adequately capture price dynamics
 
-Detected change points may not perfectly align with known events
+### **Limitations**
+- **Correlation ≠ Causation**: Temporal alignment does not prove causality  
+- External factors (e.g., speculation, exchange rates) may influence prices  
+- Sensitivity to noise and parameter choices  
+- Daily prices may not capture intraday dynamics
 
-Correlation does not imply causation
+---
 
-⚠️ Assumptions and Limitations
-Assumptions
-
-Event start dates are approximate
-
-Market reactions may be delayed
-
-Log returns adequately capture price dynamics
-
-Limitations
-
-Correlation ≠ Causation: Temporal alignment does not prove causality
-
-External factors (e.g., speculation, exchange rates) may influence prices
-
-Sensitivity to noise and parameter choices
-
-Daily prices may not capture intraday dynamics
-
-📢 Communication Strategy
-
+## 📢 Communication Strategy
 Results from Task 1 will be communicated via:
 
-Technical reports for analysts and policymakers
+- **Technical reports** for analysts and policymakers  
+- **Interactive dashboards** for investors and energy companies  
+- **Visualizations** highlighting change points and event associations  
+- **Narrative summaries** translating statistical findings into actionable insights  
 
-Interactive dashboards for investors and energy companies
+---
 
-Visualizations highlighting change points and event associations
+## ✅ Task 1 Deliverables Status
 
-Narrative summaries translating statistical findings into actionable insights
+| Requirement | Status |
+|------------|--------|
+| Defined analysis workflow | ✅ Completed |
+| Event dataset (10–15 events) | ✅ Completed |
+| Trend analysis | ✅ Completed |
+| Stationarity testing | ✅ Completed |
+| Volatility analysis | ✅ Completed |
+| Change point model explanation | ✅ Completed |
+| Assumptions & limitations | ✅ Completed |
+| Communication channels | ✅ Completed |
 
-✅ Task 1 Deliverables Status
-Requirement	Status
-Defined analysis workflow	✅ Completed
-Event dataset (10–15 events)	✅ Completed
-Trend analysis	✅ Completed
-Stationarity testing	✅ Completed
-Volatility analysis	✅ Completed
-Change point model explanation	✅ Completed
-Assumptions & limitations	✅ Completed
-Communication channels	✅ Completed
-🚀 Next Steps (Task 2 & Beyond)
+---
 
-Implement Bayesian change point detection models
+## 🚀 Next Steps (Task 2 & Beyond)
+- Implement **Bayesian change point detection models**  
+- Quantify **regime shifts** in oil prices  
+- Evaluate **event impact** using probabilistic methods  
+- Build **interactive dashboards** for stakeholders  
 
-Quantify regime shifts in oil prices
+---
 
-Evaluate event impact using probabilistic methods
-
-Build interactive dashboards for stakeholders
-
-🧠 Author
-
-Bezawit Assefa
-10 Academy – Artificial Intelligence Mastery Program
-Week 11 Project
+## 🧠 Author
+**Ruhama Beshada**  
+10 Academy – Artificial Intelligence Mastery Program  
+Week 11 Project  
